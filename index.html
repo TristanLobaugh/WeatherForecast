@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html ng-app="weatherApp" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Weather Forecast</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<script type="text/javascript" src="js/angular-route.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLdAHQM8mVjiprNAXBi9DKRCobNr3nRMg&libraries=places&callback="></script>
+	<script type="text/javascript" src="js/controller.js"></script>
+</head>
+<body ng-controller="weatherController">
+	<div id="header-wrapper">
+		<div id="header">Weather Forecast</div>
+		<div id="developer-wrapper">
+			<span>Written by: <a href="http://tristanlobaugh.com/">Tristan Lobaugh</a></span>
+		</div>
+		<div id="credits-wrapper">
+			<span>Powered by: <a href="https://darksky.net">Dark Sky API</a></span>
+		</div>
+	</div>
+	<div id="location-wrapper">
+		<div id=search-wrapper>
+			<input id="location-input" type="text" ng-model="location" placeholder="Atlanta, GA">
+			<button id="location-button" type="button" class="btn btn-primary" ng-click="getLocation()">Get Forecast</button>
+		</div>
+		<div id="current-wrapper">
+			<div ng-hide="forecastInactive">Current Location: <span id="current-location">{{location}}</span></div>
+		</div>
+	</div>
+	<div id="weather-wrapper" ng-hide="forecastInactive">
+		<div id="today-wrapper">
+			<div id="day-wrapper">{{today}}</div>
+			<div id="conditions-wrapper">
+				<span id="conditions-icon"><img ng-src="images/{{current.icon}}.png" alt=""></span>
+				<span id="condtion">{{current.summary}}</span>
+			</div>
+			<div id="high-low-wrapper">
+				<div class="hl-wrapper">
+					<div class="hl-label">High</div>
+					<div class="hlTemp">{{daily[0].temperatureMax | number:0}}&#8457</div>
+				</div>
+				<div class="hl-wrapper">
+					<div class="hl-label">Low</div>
+					<div  class="hlTemp">{{daily[0].temperatureMin | number:0}}&#8457</div>
+				</div>
+				<div class="hl-wrapper">
+					<div class="hl-label">Chance of Rain</div>
+					<div class="hlTemp">{{daily[0].precipProbability}}%</div>
+				</div>
+			</div>
+			<div id="current-temp">{{current.temperature | number:0}}&#8457</div>
+		</div>
+		<div id="forecast-wrapper">
+			<div class="daily-forecast" ng-repeat="day in dailyForecast track by $index">
+				<div class="the-day forecast">{{day.day}}</div>
+				<div class="the-icon forecast"><img ng-src="images/{{day.icon}}.png"></div>
+				<div class="the-status forecast">{{day.status}}</div>
+				<div class="the-high forecast">{{day.high | number:0}}&#8457</div>
+				<div class="the-low forecast">{{day.low | number:0}}&#8457</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
