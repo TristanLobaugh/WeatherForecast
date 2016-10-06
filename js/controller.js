@@ -12,7 +12,6 @@ weatherApp.config(function($routeProvider){
 
 weatherApp.controller("weatherController", function($scope, $http, $location){
 	$scope.weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-	$scope.dailyForecast = [];
 	var myUrl = "http://tristanlobaugh.com:3010/";
 	$scope.forecastInactive = true;
 	$scope.location;
@@ -36,6 +35,7 @@ weatherApp.controller("weatherController", function($scope, $http, $location){
 	getForecast = function(lat,lng){
 		// console.log("Lat: " + lat);
 		// console.log("Lat: " + lng);
+		$scope.dailyForecast = [];
 		var myWeatherApi = myUrl + "get_weather";
 		$http.post(myWeatherApi,{"lat": lat, "lng": lng})
 		.then(function successCallback(response){
