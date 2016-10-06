@@ -47,7 +47,7 @@
 				</div>
 				<div class="hl-wrapper">
 					<div class="hl-label">Chance of Rain</div>
-					<div class="hlTemp">{{daily[0].precipProbability}}%</div>
+					<div class="hlTemp">{{(daily[0].precipProbability) * 100}}%</div>
 				</div>
 			</div>
 			<div id="current-temp">{{current.temperature | number:0}}&#8457</div>

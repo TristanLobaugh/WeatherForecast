@@ -13,6 +13,7 @@ weatherApp.config(function($routeProvider){
 weatherApp.controller("weatherController", function($scope, $http, $location){
 	$scope.weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 	var myUrl = "http://tristanlobaugh.com:3010/";
+	// var myUrl = "http://localhost:3010/";
 	$scope.forecastInactive = true;
 	$scope.location;
 	var lat;
