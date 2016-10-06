@@ -55,7 +55,7 @@ weatherApp.controller("weatherController", function($scope, $http, $location){
 		for(var i = 0; i < days.length; i++){
 			dailyDate = new Date(days[i].time*1000)
 			dailyDay = $scope.weekday[dailyDate.getDay()]
-			$scope.dailyForecast.push(new Day (dailyDay, days[i].icon, days[i].summary, days[i].temperatureMax, days[i].temperatureMax));
+			$scope.dailyForecast.push(new Day (dailyDay, days[i].icon, days[i].summary, days[i].temperatureMax, days[i].temperatureMin));
 		}
 		console.log($scope.dailyForecast);
 	}
